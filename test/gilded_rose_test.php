@@ -51,21 +51,26 @@ class GildedRoseTest extends TestCase {
 
         $this->assertEquals(3, $items['Dexterity']->sell_in);
         $this->assertEquals(3, $items['Dexterity']->quality);
+        $this->assertEquals('+5 Dexterity Vest', $items['Dexterity']->name);
 
         $this->assertEquals(3, $items['Aged']->sell_in);
         $this->assertEquals(5, $items['Aged']->quality);
+        $this->assertEquals('Aged Brie', $items['Aged']->name);
 
         $this->assertEquals(3, $items['Elixir']->sell_in);
         $this->assertEquals(3, $items['Elixir']->quality);
+        $this->assertEquals('Elixir of the Mongoose', $items['Elixir']->name);
 
         $this->assertEquals(0, $items['Sulfuras']->sell_in);
         $this->assertEquals(4, $items['Sulfuras']->quality);
+        $this->assertEquals('Sulfuras, Hand of Ragnaros', $items['Sulfuras']->name);
 
         $this->assertEquals(-1, $items['Sulfuras2']->sell_in);
         $this->assertEquals(4, $items['Sulfuras2']->quality);
 
         $this->assertEquals(14, $items['Backstage1']->sell_in);
         $this->assertEquals(5, $items['Backstage1']->quality);
+        $this->assertEquals('Backstage passes to a TAFKAL80ETC concert', $items['Backstage1']->name);
 
         $this->assertEquals(9, $items['Backstage2']->sell_in);
         $this->assertEquals(6, $items['Backstage2']->quality);
@@ -75,6 +80,7 @@ class GildedRoseTest extends TestCase {
 
         $this->assertEquals(3, $items['Conjured']->sell_in);
         $this->assertEquals(2, $items['Conjured']->quality);
+        $this->assertEquals('Conjured Mana Cake', $items['Conjured']->name);
     }
 
     /**
