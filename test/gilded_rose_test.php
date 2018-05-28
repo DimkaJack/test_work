@@ -4,6 +4,36 @@ use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase {
 
+    /**
+     * Проверка инициализации классов фабрикой QualityUpdaterFactory
+     */
+    function testQualityUpdaterFactoryCanCreate() {
+        $item = new Item('+5 Dexterity Vest', 4, 4);
+        $quality_updater = (new QualityUpdaterFactory())->create($item);
+        $this->assertInstanceOf(BaseQualityUpdater::class, $quality_updater);
+
+        $item = new Item('Aged Brie', 4, 4);
+        $quality_updater = (new QualityUpdaterFactory())->create($item);
+        $this->assertInstanceOf(AgedBrie::class, $quality_updater);
+
+        $item = new Item('Backstage passes to a TAFKAL80ETC concert', 4, 4);
+        $quality_updater = (new QualityUpdaterFactory())->create($item);
+        $this->assertInstanceOf(Backstage::class, $quality_updater);
+
+        $item = new Item('Sulfuras, Hand of Ragnaros', 4, 4);
+        $quality_updater = (new QualityUpdaterFactory())->create($item);
+        $this->assertInstanceOf(Sulfuras::class, $quality_updater);
+
+        $item = new Item('Conjured Mana Cake', 4, 4);
+        $quality_updater = (new QualityUpdaterFactory())->create($item);
+        $this->assertInstanceOf(Conjured::class, $quality_updater);
+
+
+    }
+
+    /**
+     * Обновление качества
+     */
     function testGildedRoseUpdateQuality() {
         $items = [
             'Dexterity' => new Item('+5 Dexterity Vest', 4, 4),
@@ -47,6 +77,9 @@ class GildedRoseTest extends TestCase {
         $this->assertEquals(2, $items['Conjured']->quality);
     }
 
+    /**
+     * Обновление качества для просроченных продуктов
+     */
     function testGildedRoseUpdateQualityPassed() {
         $items = [
             'Dexterity' => new Item('+5 Dexterity Vest', -1, 4),

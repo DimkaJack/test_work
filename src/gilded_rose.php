@@ -7,7 +7,7 @@
  * Первоначально хотел использовать массивы, но вышло много кривого кода.
  * Поэтому использовал фабрику, создавать абстракции не стал, т.к. кажутся здесь избыточными
  */
-class ProductFactory{
+class QualityUpdaterFactory{
 
     /**
      * Создание нужного класса на основе имени продукта.
@@ -201,7 +201,7 @@ class GildedRose {
     function update_quality() {
         foreach ($this->items as $item) {
 
-            $quality_updater = (new ProductFactory())->create($item);
+            $quality_updater = (new QualityUpdaterFactory())->create($item);
 
             $quality_updater->update();
 
